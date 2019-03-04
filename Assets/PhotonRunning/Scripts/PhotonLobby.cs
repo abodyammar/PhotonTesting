@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace PhotonTesting
+namespace PhotonRunning
 { 
     public class PhotonLobby : MonoBehaviourPunCallbacks
     {
@@ -42,6 +42,8 @@ namespace PhotonTesting
         public override void OnConnectedToMaster()
         {
             Debug.Log("Plyaer has connected to the Photon Master server");
+            //When master client loads a scene then all players connected to master will also load that scene
+            PhotonNetwork.AutomaticallySyncScene = true;
             battleButton.SetActive(true);
         }
 
@@ -65,14 +67,18 @@ namespace PhotonTesting
             //base.OnCreateRoomFailed(returnCode, message);
         }
 
+
+        // CreateRoom abstraced code to create room and its settings
         private void CreateRoom()
         {
             Debug.Log("Create Room");
             int randomRoomName = Random.Range(0, 10000);
-            RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 10 };
+            RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)MultiplayerSetting.multiplayerSetting.maxPlayer };
             PhotonNetwork.CreateRoom("Room_" + randomRoomName, roomOps);
         }
 
+
+        // UI Buttons Functions
         public void OnBattleButtonClicked()
         {
             Debug.Log("Battle Button Clicked");
