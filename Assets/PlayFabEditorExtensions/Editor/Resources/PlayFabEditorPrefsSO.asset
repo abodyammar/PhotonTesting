@@ -3,18 +3,19 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: 
-  DevAccountToken: 
-  SelectedStudio: 
-  SdkPath: 
+  DevAccountEmail: devteamsolar@gmail.com
+  DevAccountToken: zsrfn6qf855ih1gpfsu89zqeabtuqztoemkn1k9cfp97yy51s1nnsqbfo6ssksmnxpks3wgjpy1b56es1rrgsoz6ea7ui41n78qq8q4os3q43jes3wstmbdarma5pf7fgpxnjak99hykskpbbbj5e5o7qh8poczzzbci4ntjd18kt546to69nfzyoakcp7k5b4exxwhu
+  SelectedStudio: Team Solar
+  SdkPath: Assets/PlayFabSdk
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0

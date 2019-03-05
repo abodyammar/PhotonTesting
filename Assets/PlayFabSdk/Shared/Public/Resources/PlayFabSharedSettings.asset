@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093286084a3d1994a9c28281a1c38b1d, type: 3}
   m_Name: PlayFabSharedSettings
   m_EditorClassIdentifier: 
-  TitleId: 
+  TitleId: 4339
   VerticalName: 
-  DeveloperSecretKey: 
+  DeveloperSecretKey: W4SJAGI9NJOWFI417GQZDS1ABA59O6NWTE41YAHKGD3T1BYIEH
   ProductionEnvironmentUrl: 
   RequestType: 2
   RequestTimeout: 2000
