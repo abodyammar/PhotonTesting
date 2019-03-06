@@ -2,15 +2,17 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace Com.TeamSolar.PhotonTesting {
-    public class TestLocationService : MonoBehaviour {
-        [SerializeField]
-        private Text debugLog;
+namespace PhotonTesting {
+    public class LocationServices : MonoBehaviour {
+
+        public float latitude;
+        public float longitude;
 
         IEnumerator Start() {
             // First, check if user has location service enabled
             if (!Input.location.isEnabledByUser) {
-                debugLog.text += "\nDEBUG: location services are not enabled";
+                Utilities.WriteDebugLog("location services are not enabled");
+                // request access here
                 yield break;
             }
 
@@ -19,7 +21,7 @@ namespace Com.TeamSolar.PhotonTesting {
 
             // Wait until service initializes
             int maxWait = 20;
-            debugLog.text += "\nDEBUG: location services initializing...";
+            Utilities.WriteDebugLog("location services initializing...");
             while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
                 yield return new WaitForSeconds(1);
                 maxWait--;
@@ -27,17 +29,19 @@ namespace Com.TeamSolar.PhotonTesting {
 
             // Service didn't initialize in 20 seconds
             if (maxWait < 1) {
-                debugLog.text += "\nDEBUG: Timed out";
+                Utilities.WriteDebugLog("Timed out");
                 yield break; 
             }
 
             // Connection has failed
             if (Input.location.status == LocationServiceStatus.Failed) {
-                debugLog.text += "\nDEBUG: Unable to determine device location";
+                Utilities.WriteDebugLog("Unable to determine device location");
                 yield break;
             } else {
                 // Access granted and location value could be retrieved
-                debugLog.text += "\nDEBUG: Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp;
+                Utilities.WriteDebugLog("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
+                latitude = Input.location.lastData.latitude;
+                longitude = Input.location.lastData.longitude;
             }
 
             // Stop service if there is no need to query location updates continuously
