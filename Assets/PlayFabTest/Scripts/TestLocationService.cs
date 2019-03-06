@@ -28,7 +28,7 @@ namespace Com.TeamSolar.PhotonTesting {
             // Service didn't initialize in 20 seconds
             if (maxWait < 1) {
                 debugLog.text += "\nDEBUG: Timed out";
-                yield break;
+                yield break; 
             }
 
             // Connection has failed

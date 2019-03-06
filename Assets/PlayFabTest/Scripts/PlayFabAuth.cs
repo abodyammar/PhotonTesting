@@ -62,7 +62,7 @@ namespace Com.TeamSolar.PhotonTesting {
             if (PhotonNetwork.IsConnected) {
                 LogMessage("creating room by name");
                 PhotonNetwork.CreateRoom(roomName.text, new RoomOptions { MaxPlayers = 4, PublishUserId = true });
-            } else {
+            } else { 
                 LogMessage("Not connected to online play");
             }
         }
