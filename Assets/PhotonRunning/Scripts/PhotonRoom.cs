@@ -39,6 +39,7 @@ namespace PhotonRunning
 
         private void Awake()
         {
+            // If going to double load this singleton, Destory it after user in privois scene, such as a Disconnet Player
             // Create singeltion of the object
             if (PhotonRoom.room == null)
             {
@@ -55,9 +56,14 @@ namespace PhotonRunning
             }
             // Presisent Gameobject between scenes
             DontDestroyOnLoad(this.gameObject);
+
+            // Best practice to keep this here in Awake
+            PV = GetComponent<PhotonView>();
         }
         // Class Methods //
 
+
+        // Base override functions
         public override void OnEnable()
         {
             base.OnEnable();
@@ -65,11 +71,12 @@ namespace PhotonRunning
             // Event Listiner we are attaching function to
             SceneManager.sceneLoaded += OnSceneFinishedLoading; 
         }
-
+        // Base override functions
         public override void OnDisable()
         {
             base.OnDisable();
             PhotonNetwork.RemoveCallbackTarget(this);
+            // Removing Event Listner
             SceneManager.sceneLoaded -= OnSceneFinishedLoading;
         }
 
@@ -78,7 +85,7 @@ namespace PhotonRunning
         // Start is called before the first frame update
         void Start()
         {
-            PV = GetComponent<PhotonView>();
+            // PV = GetComponent<PhotonView>(); moved to Awake for stablity issues 
             readyToCount = false;
             readyToStart = false;
 
@@ -127,6 +134,7 @@ namespace PhotonRunning
 
         // Class Methods //
 
+        // Based override class of Photon
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
@@ -214,6 +222,8 @@ namespace PhotonRunning
             {
                 PhotonNetwork.CurrentRoom.IsOpen = false;
             }
+
+            // can be just a number 
             PhotonNetwork.LoadLevel(MultiplayerSetting.multiplayerSetting.multiplayerScene);
 
         }
