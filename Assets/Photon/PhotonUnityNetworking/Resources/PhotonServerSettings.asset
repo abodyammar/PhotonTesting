@@ -34,5 +34,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPC_CleatePlayer
   - RPC_LoadedGameScene
+  - PRC_SetCharacterColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
