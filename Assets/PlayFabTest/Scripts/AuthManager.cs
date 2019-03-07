@@ -17,6 +17,8 @@ namespace PhotonTesting {
 
         #region Monobehaviour Callbacks
 
+        // on start, check to see if login token is already present so players don't have to log in every time
+
         private void Awake() {
             Utilities.ToggleActive("authPanel", true);
             Utilities.ToggleActive("roomPanel", false);
@@ -30,6 +32,8 @@ namespace PhotonTesting {
 
 
         #region PlayFab/Photon Authentication Methods
+
+        // check for playfab login token
 
         /* Step 1
         * We authenticate current PlayFab user normally. 
@@ -47,6 +51,8 @@ namespace PhotonTesting {
                 AndroidDeviceId = SystemInfo.deviceUniqueIdentifier
             }, RequestPhotonToken, OnPlayFabError);
         }
+
+        // prepare for cases in which a user's phone is sold after they already added an email to recover account
 
         /* Step 2
          * We request Photon authentication token from PlayFab.
@@ -92,10 +98,10 @@ namespace PhotonTesting {
             Utilities.ToggleActive("roomPanel", true);
             Utilities.ToggleActive("authPanel", false);
 
-            if (!PhotonNetwork.IsConnected) {
+//            if (!PhotonNetwork.IsConnected) {
                 Utilities.WriteDebugLog("Connecting...");
                 PhotonNetwork.ConnectUsingSettings();
-            }
+//            }
         }
 
         // callback when playfab authentication encounters an error
